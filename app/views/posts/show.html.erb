@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-
+<div class="pull-right"> <%= form_for(Heart.new) do |f| %>
+  <%= f.hidden_field @post_id, value: @post.id %>
+  <%= f.submit "❤", class: 'btn btn-danger' %>
+  <% end %>
+</div>
 <h2>
 
   <%= @post.title %>
@@ -14,6 +18,9 @@ Show an image
   <strong>Content:</strong>
   <%= @post.content %>
 </p>
+<small class="pull-right">
+  <%= @post.hearts.count %> hearts
+</small>
 <% end %>
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
